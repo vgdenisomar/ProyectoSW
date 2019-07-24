@@ -5,7 +5,7 @@ nav {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  background-color: #3e549c;
+  background-color: #c0e359;
   color:#fff;
 }
 
@@ -20,4 +20,9 @@ nav a{
   box-sizing: border-box;
   max-width: 50%;
   width:50%;
+}
+
+nav a:hover{
+  background: rgba(0, 0, 0, 0.1);
+  color: black;
 }

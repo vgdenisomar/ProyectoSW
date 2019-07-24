@@ -7,7 +7,7 @@ export default class Home extends Component{
   render() {
     return (
         <div className="home">
-            <h1>One Big Thing</h1>
+            <h1>Sustento</h1>
             <div>&nbsp;</div>
             {(this.props.auth.logged) ? (<div className="half"><Button customClass="primary" onClick={(e) => { this.props.setUnAuth(false)}}><IoIosLogOut/>&nbsp;Logout</Button></div>):null}
         </div>
