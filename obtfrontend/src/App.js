@@ -9,6 +9,9 @@ import Login from './Components/Pages/Public/Login/Login';
 import Sigin from './Components/Pages/Public/Signin/Sigin';
 
 import Dashboard from  './Components/Pages/Private/Dashboard/Dashboard';
+import products from './Components/Pages/Private/products/products';
+import donaciones from './Components/Pages/Private/donaciones/donaciones';
+import perfil from './Components/Pages/Private/perfil/perfil';
 
 class App extends Component {
   constructor(){
@@ -52,10 +55,12 @@ class App extends Component {
     return (
       <Router>
         <section className="container">
-          <Route path="/" exact render={(props) => (<Home {...props} auth={this.state.auth} setUnAuth={this.setUnAuth} />)} />
-          <Route path="/login" render={ (props)=>(<Login {...props} auth={this.state.auth} setAuth={this.setAuth} />) } />
+          <Route path="/" exact render={ (props)=>(<Login {...props} auth={this.state.auth} setAuth={this.setAuth} />) } />
           <Route path="/signin"  component={Sigin} />
           <PrivateRoute path="/main" auth={this.state.auth} component={Dashboard} />
+          <PrivateRoute path="/productos" auth={this.state.auth} component={products} />
+          <PrivateRoute path="/donaciones" auth={this.state.auth} component={donaciones} />
+          <PrivateRoute path="/perfil" auth={this.state.auth}  component={perfil} />
           <NavBar auth={this.state.auth}/>
         </section>
       </Router>

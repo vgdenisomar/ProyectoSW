@@ -4,6 +4,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { naxios } from '../../../../Utilities';
+import logo from '../image/logoSustento.jpeg'
+import './login.css'
 
 import Button from '../../../Common/Btns/Buttons';
 import Campo from '../../../Common/Campo/Campo';
@@ -52,14 +54,14 @@ export default class Login extends Component{
     if(this.state.redirect){
       return (
         <Redirect
-          to={(this.props.location.state) ? this.props.location.state.from.pathname : '/'}
+          to={(this.props.location.state) ? this.props.location.state.from.pathname : '/productos'}
         />
       );
     }
     return (
       <section>
         <h1>Iniciar Sesión</h1>
-
+        <img className='logo' src={logo}></img>
         <section className="main fix640">
          <Campo
           caption="Correo Electrónico"

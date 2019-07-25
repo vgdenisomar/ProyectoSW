@@ -12,7 +12,7 @@ const NavItem = ({ to, children, ...rest }) => {
 
 export default ({auth, unSetAuth})=>{
   console.log(auth);
-  if(auth.logged) {
+  if(!auth.logged) {
     return (
       false
     )
@@ -20,9 +20,9 @@ export default ({auth, unSetAuth})=>{
   else{
     return(
       <nav>
-      <NavItem to="/"><IoIosList/>&nbsp;Productos</NavItem>
-      <NavItem to="/main"><IoIosDoneAll />&nbsp;Donaciones</NavItem>
-      <NavItem to="/backlog"><IoIosPerson/>&nbsp;Perfil</NavItem>
+      <NavItem to="/productos"><IoIosList/>&nbsp;Productos</NavItem>
+      <NavItem to="/donaciones"><IoIosDoneAll />&nbsp;Donaciones</NavItem>
+      <NavItem to="/perfil"><IoIosPerson/>&nbsp;Perfil</NavItem>
     </nav>
     )
   }

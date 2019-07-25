@@ -69,7 +69,7 @@ export default class Signin extends Component{
               <Button
                 caption="Iniciar Sesión"
                 customClass="link"
-                onClick={(e)=>{this.props.history.push('/login')}}
+                onClick={(e)=>{this.props.history.push('/')}}
               />
           </section>
         </section>
