@@ -6,7 +6,7 @@ import './NavBar.css';
 
 const NavItem = ({ to, children, ...rest }) => {
   return (
-    <NavLink activeClassName="activeNav" to={to}>{children}</NavLink>
+    <NavLink activeClassName="activeNav" className="iconotamaño" to={to}>{children}</NavLink>
   );
 };
 
@@ -20,9 +20,9 @@ export default ({auth, unSetAuth})=>{
   else{
     return(
       <nav>
-      <NavItem to="/productos" activeClassName="active"><IoIosList/>&nbsp;Productos</NavItem>
-      <NavItem to="/donaciones" activeClassName="active"><IoIosDoneAll />&nbsp;Donaciones</NavItem>
-      <NavItem to="/perfil" activeClassName="active"><IoIosPerson/>&nbsp;Perfil</NavItem>
+      <NavItem to="/productos"  activeClassName="active"><IoIosList/>Productos</NavItem>
+      <NavItem to="/donaciones" activeClassName="active"><IoIosDoneAll />Donaciones</NavItem>
+      <NavItem to="/perfil"  activeClassName="active"><IoIosPerson/>Perfil</NavItem>
     </nav>
     )
   }

@@ -62,7 +62,7 @@ export default class Login extends Component{
     }
     return (
       <section>
-        <h1>Login Proveedores
+        <h1>Proveedores
         <div>
         <a href="/" aria-current="page" class="btnicon"><IoIosHome/></a>
         </div>

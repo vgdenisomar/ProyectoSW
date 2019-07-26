@@ -1,0 +1,11 @@
+div a{
+    display: block;
+    color: white;
+    margin: 0%;
+    font-size: 105%;
+  }
+  
+  div a:hover{
+    background: rgba(0, 0, 0, 0.1);
+    color: black;
+  }
