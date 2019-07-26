@@ -17,3 +17,7 @@ input{
   width: 100%;
   outline-style: none;
 }
+
+.btnicon{
+  height: 40px;
+}

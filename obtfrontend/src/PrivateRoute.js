@@ -8,7 +8,7 @@ export default ({component:Component, auth, ...rest})=>{
       render={
         ( props ) => {
           console.log(auth);
-          return (auth.logged) ? ( <Component {...props} auth={auth} />) : (<Redirect to={{pathname:"/login", state:{ from: props.location}}} />)
+          return (auth.logged) ? ( <Component {...props} auth={auth} />) : (<Redirect to={{pathname:"/", state:{ from: props.location}}} />)
         }
       }
     />
