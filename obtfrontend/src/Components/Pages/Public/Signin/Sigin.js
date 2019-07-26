@@ -5,7 +5,8 @@ import React, { Component } from 'react';
 import Button from '../../../Common/Btns/Buttons';
 import Campo from '../../../Common/Campo/Campo';
 import { naxios } from '../../../../Utilities';
-
+import logo from '../image/logoSustento.jpeg'
+import '../Login/login.css'
 /*
   module.exports = class Login .....
 */
@@ -14,6 +15,7 @@ export default class Signin extends Component{
     super();
     //definición del estado inicial
     this.state = {
+      name:'',
       email:'',
       password:'',
       error:false
@@ -29,11 +31,11 @@ export default class Signin extends Component{
     this.setState({...this.state,[name]:value});
   }
   onSiginBtnClick(e){
-    const {email, password} = this.state;
-    naxios.post('/api/security/signin', { email, password })
+    const {name, email, password} = this.state;
+    naxios.post('/api/security/signin', {name,email, password })
     .then(({data})=>{
       console.log(data);
-      this.props.history.push("/login");
+      this.props.history.push("/");
     })
     .catch((error)=>{
       console.log(error);
@@ -45,7 +47,14 @@ export default class Signin extends Component{
     return (
       <section>
         <h1>Crear Nueva Cuenta</h1>
+        <img className='logo' src={logo}></img>
         <section className="main fix640">
+        <Campo
+            caption="Nombre"
+            value={this.state.name}
+            name="name"
+            onChange={this.onChangeHandler}
+          />
          <Campo
           caption="Correo Electrónico"
           value={this.state.email}

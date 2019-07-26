@@ -21,8 +21,9 @@ module.exports = function(db){
   }
 
   //Ingresa un nuevo usuario a la colección de Usuario
-  userModel.agregarNuevo = (email, password, handler) => {
+  userModel.agregarNuevo = (name,email, password, handler) => {
     var newUser = Object.assign({}, {
+      name:name,
       email:email,
       password: genPassword(password),
       dateCreated: new Date().getTime(),

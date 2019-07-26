@@ -20,9 +20,9 @@ export default ({auth, unSetAuth})=>{
   else{
     return(
       <nav>
-      <NavItem to="/productos"><IoIosList/>&nbsp;Productos</NavItem>
-      <NavItem to="/donaciones"><IoIosDoneAll />&nbsp;Donaciones</NavItem>
-      <NavItem to="/perfil"><IoIosPerson/>&nbsp;Perfil</NavItem>
+      <NavItem to="/productos" activeClassName="active"><IoIosList/>&nbsp;Productos</NavItem>
+      <NavItem to="/donaciones" activeClassName="active"><IoIosDoneAll />&nbsp;Donaciones</NavItem>
+      <NavItem to="/perfil" activeClassName="active"><IoIosPerson/>&nbsp;Perfil</NavItem>
     </nav>
     )
   }

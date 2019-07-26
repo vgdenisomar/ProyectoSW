@@ -26,3 +26,17 @@ nav a:hover{
   background: rgba(0, 0, 0, 0.1);
   color: black;
 }
+
+.nav .nav-pills >li >a {
+  color: black;
+}
+ .nav .nav-pills > li > a:hover {
+   background-color: gold;
+   color: black;
+}
+
+.nav .nav-pills .active {
+ background-color: gold;
+ color:Black ;
+ font-weight:bold;
+}
