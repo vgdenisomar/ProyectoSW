@@ -6,11 +6,11 @@ import { Redirect } from 'react-router-dom';
 import { naxios } from '../../../../Utilities';
 import logo from '../image/logoSustento.jpeg'
 
-import './login.css'
+import '../Login/login.css'
 
 import Button from '../../../Common/Btns/Buttons';
 import Campo from '../../../Common/Campo/Campo';
-import { IoIosPersonAdd, IoIosConstruct, IoIosPerson } from 'react-icons/io';
+import { IoIosPersonAdd, IoIosConstruct, IoIosPerson, IoIosHome } from 'react-icons/io';
 
 /*
   module.exports = class Login .....
@@ -62,9 +62,9 @@ export default class Login extends Component{
     }
     return (
       <section>
-        <h1>Login Usuario
+        <h1>Login Proveedores
         <div>
-        <a href="/loginProveedores" aria-current="page" class="btnicon"><IoIosPerson/></a>
+        <a href="/" aria-current="page" class="btnicon"><IoIosHome/></a>
         </div>
         </h1>
         <img className='logo' src={logo}></img>
@@ -88,11 +88,6 @@ export default class Login extends Component{
                 caption="Iniciar Sesión"
                 onClick={this.onSiginBtnClick}
                 customClass="primary"
-              />
-              <Button
-                caption="Crear Nueva Cuenta"
-                customClass="link"
-                onClick={(e)=>{this.props.history.push('/signin')}}
               />
           </section>
         </section>

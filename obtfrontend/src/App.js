@@ -7,6 +7,7 @@ import NavBar from './Components/Common/NavBar/NavBar';
 import Home from './Components/Pages/Public/Home/Home';
 import Login from './Components/Pages/Public/Login/Login';
 import Sigin from './Components/Pages/Public/Signin/Sigin';
+import LoginProveedores from './Components/Pages/Public/LoginProveedores/LoginProveedores';
 
 import Dashboard from  './Components/Pages/Private/Dashboard/Dashboard';
 import products from './Components/Pages/Private/products/products';
@@ -57,6 +58,7 @@ class App extends Component {
         <section className="container">
           <Route path="/" exact render={ (props)=>(<Login {...props} auth={this.state.auth} setAuth={this.setAuth} />) } />
           <Route path="/signin"  component={Sigin} />
+          <Route path="/loginproveedores"  component={LoginProveedores} />
           <PrivateRoute path="/main" auth={this.state.auth} component={Dashboard} />
           <PrivateRoute path="/productos" auth={this.state.auth} component={products} />
           <PrivateRoute path="/donaciones" auth={this.state.auth} component={donaciones} />

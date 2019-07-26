@@ -6,3 +6,17 @@
   margin-right: auto;
 
 }
+
+div a{
+  display: block;
+  color: white;
+  font-size: 140%;
+  margin: 0%;
+}
+
+div a:hover{
+  background: rgba(0, 0, 0, 0.1);
+  color: black;
+}
+
+
