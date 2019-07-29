@@ -4,36 +4,29 @@ var ObjectID = require('mongodb').ObjectID;
 
 // JSON -> Javascript Object Notation
 
-function thingsInit(db){
+function ProductsInit(db){
 // json.org
 
-var  thingsColl = db.collection('things');
+var  ProductsColl = db.collection('products');
 
-var thingsCollection = [];
+var ProductsCollection = [];
 
-var thingsStruct = {
-  "id" : 0,
-  "descripcion":'',
-  "fecha": 0,
-  "by":''
+var ProductsStruct = {
+  "nombre_Product":'',
+  "descripcion": '',
+  "Precio_Original":0,
+  "Precio_Oferta":0,
+  "Cantidad_Producto":0,
+  "Fecha_Vencimiento_Prod":Date
 };
 
 
-thingsCollection.push(
-  Object.assign({},
-      thingsStruct,
-      { "id":1,
-        "descripcion":"Mi Primer Thing",
-        "fecha": new Date().getTime(),
-        "by":"Orlando"
-      }
-  )
-);
 
 
 
 router.get('/', (req, res, next)=>{
-  thingsColl.find().toArray((err, things)=>{
+  var id = new ObjectID(req.params.id);
+  ProductsColl.find().toArray((err, things)=>{
     if(err) return res.status(200).json([]);
     return res.status(200).json(things);
   });//find toArray
@@ -41,16 +34,16 @@ router.get('/', (req, res, next)=>{
 });
 
   router.get('/page', (req, res, next) => {
-    getThings(1, 50, res);
+    getProducts(1, 50, res);
   });
 
   router.get('/page/:p/:n', (req, res, next) => {
     var page = parseInt(req.params.p);
     var items = parseInt(req.params.n);
-    getThings(page, items, res);
+    getProducts(page, items, res);
   });
 
-  function getThings(page, items, res) {
+  function getProducts(page, items, res) {
     var query = {};
     var options = {
       "limit": items,
@@ -59,7 +52,7 @@ router.get('/', (req, res, next)=>{
         "descripcion":1
       }
     };
-    thingsColl.find(query,options).toArray((err, things) => {
+    ProductsColl.find(query,options).toArray((err, things) => {
       if (err) return res.status(200).json([]);
       return res.status(200).json(things);
     });//find toArray
@@ -68,7 +61,7 @@ router.get('/', (req, res, next)=>{
 
 router.get('/:id', (req, res, next)=>{
   var query = {"_id": new ObjectID(req.params.id)}
-  thingsColl.findOne(query, (err, doc)=>{
+  ProductsColl.findOne(query, (err, doc)=>{
     if(err) {
       console.log(err);
       return res.status(401).json({"error":"Error al extraer documento"});
@@ -86,17 +79,21 @@ router.get('/:id', (req, res, next)=>{
 
 router.post('/', (req, res, next)=>{
   var newElement = Object.assign({},
-    thingsStruct,
+    ProductsStruct,
     req.body,
     {
-      "fecha": new Date().getTime(),
-      "id": new Date().getTime()
+      "nombre_Product":'',
+      "descripcion": '',
+      "Precio_Original":0,
+      "Precio_Oferta":0,
+      "Cantidad_Producto":0,
+      "Fecha_Vencimiento_Prod":Date
     }
   );
 
   //thingsCollection.push(newElement);
   //res.status(200).json(newElement);
-  thingsColl.insertOne(newElement, {} , (err, result)=>{
+  ProductsColl.insertOne(newElement, {} , (err, result)=>{
     if(err){
       console.log(err);
       return res.status(404).json({"error":"No se pudo Insertar One Thing"});
@@ -119,7 +116,7 @@ router.put('/:idElemento', (req, res, next) => {
   //   }
   //   return e;
   // } );//map
-  thingsColl.updateOne(query, update, (err, rst) => {
+  ProductsColl.updateOne(query, update, (err, rst) => {
     if(err){
       console.log(err);
       return res.status(400).json({"error": "Error al actualizar documento"});
@@ -134,7 +131,7 @@ router.put('/:idElemento', (req, res, next) => {
 router.delete('/:id', (req, res, next) => {
   //var id = parseInt(req.params.id);
   var query = {"_id": new ObjectID(req.params.id)}
-  thingsColl.removeOne(query, (err, result) => {
+  ProductsColl.removeOne(query, (err, result) => {
     if(err) {
       console.log(err);
       return res.status(400).json({"error":"Error al eliminar documento"});
@@ -150,4 +147,4 @@ router.delete('/:id', (req, res, next) => {
 
  return router;
 }
-module.exports = thingsInit;
+module.exports = ProductsInit;
