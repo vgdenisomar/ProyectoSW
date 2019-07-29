@@ -15,7 +15,7 @@ import { IoIosPersonAdd, IoIosConstruct, IoIosPerson, IoIosHome } from 'react-ic
 /*
   module.exports = class Login .....
 */
-export default class Login extends Component{
+export default class LoginProveedores extends Component{
   constructor(){
     super();
     //definición del estado inicial
@@ -37,7 +37,7 @@ export default class Login extends Component{
   }
   onSiginBtnClick(e){
     console.log(this.state);
-    naxios.post('/api/security/login', this.state)
+    naxios.post('api/securityPro/login', this.state)
       .then( ( {data , status})=>{
         this.props.setAuth(data.token, data.user);
         this.setState({redirect:true});

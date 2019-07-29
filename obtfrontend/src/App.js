@@ -13,6 +13,10 @@ import Dashboard from  './Components/Pages/Private/Dashboard/Dashboard';
 import products from './Components/Pages/Private/products/products';
 import donaciones from './Components/Pages/Private/donaciones/donaciones';
 import perfil from './Components/Pages/Private/perfil/perfil';
+import pedidos from './Components/Pages/Private/pedidos/pedidos';
+import entregar from './Components/Pages/Private/entregar/entregar';
+import mantenimiento from './Components/Pages/Private/mantenimiento/mantenimiento';
+
 
 class App extends Component {
   constructor(){
@@ -63,6 +67,9 @@ class App extends Component {
           <PrivateRoute path="/productos" auth={this.state.auth} component={products} />
           <PrivateRoute path="/donaciones" auth={this.state.auth} component={donaciones} />
           <PrivateRoute path="/perfil" auth={this.state.auth}  component={perfil} />
+          <PrivateRoute path="/pedidos" auth={this.state.auth}  component={pedidos} />
+          <PrivateRoute path="/entregar" auth={this.state.auth}  component={entregar} />
+          <PrivateRoute path="/mantenimiento" auth={this.state.auth}  component={mantenimiento} />
           <NavBar auth={this.state.auth}/>
         </section>
       </Router>

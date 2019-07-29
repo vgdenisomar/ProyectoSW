@@ -27,7 +27,6 @@ const productsApi = require('./Products')(db);
 
 
 
-
 router.get('/', (req, res, next)=>{
     //req toda la peticion del cliente
     //res toda la respuesta que le vamos a dar al cliente

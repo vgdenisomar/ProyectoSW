@@ -17,6 +17,15 @@ export default ({auth, unSetAuth})=>{
       false
     )
   }
+  else if(auth.user.user){
+    return(
+      <nav>
+      <NavItem to="/pedidos"  activeClassName="active"><IoIosList/>Pedidos</NavItem>
+      <NavItem to="/entregar"  activeClassName="active"><IoIosPerson/>Por entregar</NavItem>
+      <NavItem to="/mantenimiento" activeClassName="active"><IoIosDoneAll />Productos</NavItem>
+    </nav>
+    )
+  }
   else{
     return(
       <nav>
