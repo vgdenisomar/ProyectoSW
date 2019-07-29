@@ -23,7 +23,7 @@ passport.use(
 
 
 const securityApi = require('./security')(db);
-const thingsApi = require('./things')(db);
+const productsApi = require('./Products')(db);
 
 
 
@@ -36,7 +36,7 @@ router.get('/', (req, res, next)=>{
 });
 
 router.use('/security', securityApi);
-router.use('/things', passport.authenticate('jwt', {session:false}) , thingsApi);
+router.use('/Products', passport.authenticate('jwt', {session:false}) , productsApi);
 
 // router.get('/hello', (req, res, next)=>{
 //   res.status(200).json({"msg":"Hola Mundo"});

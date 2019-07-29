@@ -32,7 +32,7 @@ export default class Login extends Component{
     }
   }
   getDataFromDb = () => {
-    const uri = `/api/things`;
+    const uri = `/api/Products`;
     paxios.get(uri)
     .then(
       ({data})=>{
@@ -54,7 +54,7 @@ export default class Login extends Component{
             ? 'NO DB ENTRIES YET'
             : things.map((dat) => (
                 <div className="thingItem" key={dat._id}>
-                  <span> {dat.descripcion}</span>
+                  <span> {dat.nombre_Product}</span>
                   <Link to={`/detail/${dat._id}`}>
             <IoIosAdd size="2em"/>
           </Link>
