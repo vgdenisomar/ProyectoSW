@@ -11,6 +11,7 @@ var  ProductsColl = db.collection('products');
 
 var ProductsCollection = [];
 
+<<<<<<< HEAD:obtBackEnd/routes/api/Products.js
 var ProductsStruct = {
   "nombre_Product":'',
   "descripcion": '',
@@ -24,6 +25,15 @@ var ProductsStruct = {
 
 
 
+=======
+var thingsStruct = {
+  "descripcion":'',
+  "fecha": 0,
+  "by":{}
+};
+
+
+>>>>>>> master:obtBackEnd/routes/api/things.js
 router.get('/', (req, res, next)=>{
   var id = new ObjectID(req.params.id);
   ProductsColl.find().toArray((err, things)=>{
@@ -34,17 +44,31 @@ router.get('/', (req, res, next)=>{
 });
 
   router.get('/page', (req, res, next) => {
+<<<<<<< HEAD:obtBackEnd/routes/api/Products.js
     getProducts(1, 50, res);
+=======
+    var by = {"by._id": new ObjectID(req.user._id)};
+    getThings(1, 50, res, by);
+>>>>>>> master:obtBackEnd/routes/api/things.js
   });
 
   router.get('/page/:p/:n', (req, res, next) => {
+    var by = { "by._id": new ObjectID(req.user._id) };
     var page = parseInt(req.params.p);
     var items = parseInt(req.params.n);
+<<<<<<< HEAD:obtBackEnd/routes/api/Products.js
     getProducts(page, items, res);
   });
 
   function getProducts(page, items, res) {
     var query = {};
+=======
+    getThings(page, items, res , by);
+  });
+
+  async function getThings(page, items, res, by) {
+    var query = by;
+>>>>>>> master:obtBackEnd/routes/api/things.js
     var options = {
       "limit": items,
       "skip":((page-1) * items),
@@ -52,9 +76,15 @@ router.get('/', (req, res, next)=>{
         "descripcion":1
       }
     };
+<<<<<<< HEAD:obtBackEnd/routes/api/Products.js
     ProductsColl.find(query,options).toArray((err, things) => {
+=======
+    let a = thingsColl.find(query,options)
+    let totalThings = await a.count();
+    a.toArray((err, things) => {
+>>>>>>> master:obtBackEnd/routes/api/things.js
       if (err) return res.status(200).json([]);
-      return res.status(200).json(things);
+      return res.status(200).json({ things, totalThings});
     });//find toArray
   }
 
@@ -78,16 +108,25 @@ router.get('/:id', (req, res, next)=>{
 // DELETE  Delete - ELiminar
 
 router.post('/', (req, res, next)=>{
+  var {_id, email} = req.user;
   var newElement = Object.assign({},
     ProductsStruct,
     req.body,
     {
+<<<<<<< HEAD:obtBackEnd/routes/api/Products.js
       "nombre_Product":'',
       "descripcion": '',
       "Precio_Original":0,
       "Precio_Oferta":0,
       "Cantidad_Producto":0,
       "Fecha_Vencimiento_Prod":Date
+=======
+      "fecha": new Date().getTime(),
+      "by": {
+        "_id": new ObjectID(_id),
+        "email": email
+      }
+>>>>>>> master:obtBackEnd/routes/api/things.js
     }
   );
 
@@ -147,4 +186,8 @@ router.delete('/:id', (req, res, next) => {
 
  return router;
 }
+<<<<<<< HEAD:obtBackEnd/routes/api/Products.js
 module.exports = ProductsInit;
+=======
+module.exports = thingsInit;
+>>>>>>> master:obtBackEnd/routes/api/things.js
