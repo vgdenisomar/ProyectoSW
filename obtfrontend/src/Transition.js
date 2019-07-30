@@ -10,7 +10,7 @@ export const mapBouceStyles = (styles) => {
 function bounce(val) {
   return spring(val, {
     stiffness: 330,
-    damping: 22,
+    damping: 0,
   });
 }
 
@@ -42,7 +42,7 @@ export const mapGlideStyles = (styles)=>{
 function glide(val) {
   return spring(val, {
     stiffness: 174,
-    damping: 19,
+    damping: 18,
   });
 }
 

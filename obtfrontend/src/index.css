@@ -52,7 +52,7 @@ h1 {
   position: relative;
   width: 100vw;
   height: calc(98.9vh - 50px);
-  overflow: hidden;
+
 }
 .switch-wrapper>div {
   position: absolute;
