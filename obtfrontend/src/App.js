@@ -7,6 +7,8 @@ import NavBar from './Components/Common/NavBar/NavBar';
 import Home from './Components/Pages/Public/Home/Home';
 import Login from './Components/Pages/Public/Login/Login';
 import Sigin from './Components/Pages/Public/Signin/Sigin';
+import { AnimatedSwitch } from 'react-router-transition';
+import { pageTransitions as transition, mapGlideStyles as mapStyles } from './Transition';
 import LoginProveedores from './Components/Pages/Public/LoginProveedores/LoginProveedores';
 
 import Dashboard from  './Components/Pages/Private/Dashboard/Dashboard';
@@ -16,6 +18,7 @@ import perfil from './Components/Pages/Private/perfil/perfil';
 import pedidos from './Components/Pages/Private/pedidos/pedidos';
 import entregar from './Components/Pages/Private/entregar/entregar';
 import mantenimiento from './Components/Pages/Private/mantenimiento/mantenimiento';
+import detailcar from './Components/Pages/Private/detailcar/detailcar';
 
 
 class App extends Component {
@@ -60,7 +63,12 @@ class App extends Component {
     return (
       <Router>
         <section className="container">
-          <Route path="/" exact render={ (props)=>(<Login {...props} auth={this.state.auth} setAuth={this.setAuth} />) } />
+          <AnimatedSwitch
+            {... transition}
+            mapStyles={mapStyles}
+            className="switch-wrapper"
+          >
+                      <Route path="/" exact render={ (props)=>(<Login {...props} auth={this.state.auth} setAuth={this.setAuth} />) } />
           <Route path="/signin"  component={Sigin} />
           <Route path="/loginproveedores"  component={LoginProveedores} />
           <PrivateRoute path="/main" auth={this.state.auth} component={Dashboard} />
@@ -70,7 +78,10 @@ class App extends Component {
           <PrivateRoute path="/pedidos" auth={this.state.auth}  component={pedidos} />
           <PrivateRoute path="/entregar" auth={this.state.auth}  component={entregar} />
           <PrivateRoute path="/mantenimiento" auth={this.state.auth}  component={mantenimiento} />
-          <NavBar auth={this.state.auth}/>
+          <PrivateRoute path="/detailcar" auth={this.state.auth}  component={detailcar} />
+
+            </AnimatedSwitch>
+          <NavBar auth={this.state.auth} />
         </section>
       </Router>
     );

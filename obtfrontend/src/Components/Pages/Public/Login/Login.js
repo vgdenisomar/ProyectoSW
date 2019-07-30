@@ -77,9 +77,6 @@ export default class Login extends Component{
     return (
       <section>
         <h1>Usuarios
-        <div>
-        <a href="/loginProveedores" aria-current="page" class="btnicon"><IoIosPerson/></a>
-        </div>
         </h1>
         <img className='logo' src={logo}></img>
         <section className="main fix640">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './products.css'
 import {Link} from 'react-router-dom';
-import { IoIosAdd, IoIosSync, IoMdAddCircle } from 'react-icons/io';
+import { IoIosAdd,IoIosCart, IoIosSync, IoMdAddCircle } from 'react-icons/io';
 import { paxios } from '../../../../Utilities';
 /*
   module.exports = class Login .....
@@ -45,19 +45,32 @@ export default class Login extends Component{
       })
   };
 
+  register=(codProd,nombre_Product)=>{
+    paxios.post('/api/car', { codProd, nombre_Product })
+      .then(({ data }) => {
+        console.log("agregado");
+      })
+      .catch((error) => {
+        console.log(error);
+        this.setState({ error: "Error al crear nuevo Thing" });
+      })
+  }
+
     render(){
       const { things } = this.state;
         return (
           <section>
-            <h1>Sustento</h1>
+            <h1>Sustento
+            <Link to="detailcar">
+              <IoIosCart size="1.2em"/>
+            </Link>
+            </h1>
             {things.length <= 0
-            ? 'NO DB ENTRIES YET'
+            ? 'Cargando'
             : things.map((dat) => (
                 <div className="thingItem" key={dat._id}>
                   <span> {dat.nombre_Product}</span>
-                  <Link to={`/detail/${dat._id}`}>
-            <IoIosAdd size="2em"/>
-          </Link>
+                    <IoIosAdd onClick={this.register.bind(this,dat._id, dat.nombre_Product)} size="2em"/>
                 </div>
               ))}
           </section>
