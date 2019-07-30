@@ -16,16 +16,26 @@ div a{
     margin-top: -1rem;
   }
   .thingItem {
-    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0.75em;
+    box-shadow: 1px 1px 3px 3px #000;
     box-sizing: 1px;
-    padding: 1rem;
-    border-bottom: 1px solid #000;
-    min-height: 3rem;
+    padding: 1em;
+    min-height: 300px;
     align-items: center;
     justify-content: space-between;
+    float: left;
+    width: 320px;
+    
   }
-  .thingItem span{
-    padding-right:1.5rem;
+
+  .thingItem:hover{
+    box-shadow: 1px 1px 3px 3px gray;
+}
+
+  .thingItem2 span{
+    padding-right:13rem;
   }
   .center{
     justify-content: center;
