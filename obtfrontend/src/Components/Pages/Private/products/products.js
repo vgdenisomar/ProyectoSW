@@ -70,8 +70,32 @@ export default class Login extends Component{
             : things.map((dat) => (
                 <div className="thingItem" key={dat._id}>
                   <div className="thingItem2" key={dat._id}>
-                  <span> {dat.nombre_Product}</span>
-                    <IoIosAdd onClick={this.register.bind(this,dat._id, dat.nombre_Product)} size="2em"/>
+                    
+                  <span className="iconoadd"><IoIosAdd onClick={this.register.bind(this,dat._id, dat.nombre_Product)} size="2em"/></span> 
+                  
+                  <div className="span">
+                    <span> {dat.nombre_Product}</span>
+                  </div>
+                  <div className="span">
+                  <span> {dat.Descripcion}</span>
+                  </div>
+                    
+                
+                    <div className="span">
+                    <span>Precio Original: {dat.Precio_Original}</span>
+                    </div>
+                    
+                    <div className="span">
+                    <span>Precio Oferta: {dat.Precio_Oferta}</span>
+                    </div>
+                    
+                    <div className="span">
+                    <span>Cantidad: {dat.Cantidad_Producto}</span>
+                    </div>
+                    
+
+
+                    
                 </div>
                 </div>
               ))}

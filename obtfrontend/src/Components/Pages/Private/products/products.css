@@ -34,9 +34,23 @@ div a{
     box-shadow: 1px 1px 3px 3px gray;
 }
 
-  .thingItem2 span{
-    padding-right:13rem;
+  .thingItem2 div span{
+    padding: 1.5em;
+    font-size: 18px;
+    font-weight: bold;
   }
   .center{
     justify-content: center;
   }
+
+ .iconoadd{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  
+}
+
+.iconoadd:hover{
+  background-color: rgb(121, 120, 120);
+  color: white;
+}
