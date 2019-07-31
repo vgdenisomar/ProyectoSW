@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import Button from '../../../Common/Btns/Buttons';
 import Campo from '../../../Common/Campo/Campo';
-import { naxios } from '../../../../Utilities';
+import { paxios } from '../../../../Utilities';
 
 /*
   module.exports = class Login .....
@@ -34,8 +34,7 @@ export default class PrdAdd extends Component{
   }
   onSaveBtnClick(e){
     const {nombre_Product,descripcion,Precio_Original,Precio_Oferta,Cantidad_Producto,Fecha_Vencimiento_Prod} = this.state;
-      console.log(nombre_Product);
-    naxios.post('../api/Products', {nombre_Product,descripcion,Precio_Original,Precio_Oferta,Cantidad_Producto,Fecha_Vencimiento_Prod })
+    paxios.post('/api/Products', {nombre_Product,descripcion,Precio_Original,Precio_Oferta,Cantidad_Producto,Fecha_Vencimiento_Prod })
     .then(({data})=>{
       this.props.history.push("/mantenimiento");
     })
