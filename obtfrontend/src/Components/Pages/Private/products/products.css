@@ -50,7 +50,22 @@ div a{
   
 }
 
+.imagen{
+  width: 320px;
+  height: 220px;
+}
+
 .iconoadd:hover{
-  background-color: rgb(121, 120, 120);
+}
+
+.iconoadd2:hover{
+  background-color:#c0e359;
   color: white;
+}
+
+.overr{
+  height: calc(100vh - 128px);
+  padding: 0px;
+  overflow: auto;
+  margin-top: -1rem;
 }

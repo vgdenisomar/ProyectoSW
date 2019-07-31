@@ -67,6 +67,7 @@ export default class Login extends Component{
             <IoIosCart size="1.2em"/>
           </Link>
           </h1>
+          <section className="overr">
           {things.length <= 0
           ? 'Seleccione un producto para realizar su compra'
           : things.map((dat) => (
@@ -75,6 +76,8 @@ export default class Login extends Component{
                 <MdDelete onClick={this.delete.bind(this,dat.codProd)} size="2em"/>
               </div>
             ))}
+          </section>
+         
         </section>
       );
 }
