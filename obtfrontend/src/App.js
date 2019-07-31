@@ -80,7 +80,7 @@ class App extends Component {
           <PrivateRoute path="/entregar" auth={this.state.auth}  component={entregar} />
           <PrivateRoute path="/mantenimiento" auth={this.state.auth}  component={mantenimiento} />
           <PrivateRoute path="/detailcar" auth={this.state.auth}  component={detailcar} />
-          <PrivateRoute path="/PrdAdd" auth={this.state.auth}  component={prdAdd} />
+          <PrivateRoute path="/prdAdd" auth={this.state.auth}  component={prdAdd} />
 
             </AnimatedSwitch>
           <NavBar auth={this.state.auth} />

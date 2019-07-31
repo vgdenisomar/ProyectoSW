@@ -70,6 +70,7 @@ router.get('/:id', (req, res, next)=>{
 });
 
 router.post('/', (req, res, next)=>{
+  console.log(req.body); 
   var {_id, email} = req.user;
   var newElement = Object.assign({},
     ProductsStruct,
