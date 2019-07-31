@@ -5,8 +5,7 @@ import React, { Component } from 'react';
 import Button from '../../../Common/Btns/Buttons';
 import Campo from '../../../Common/Campo/Campo';
 import { naxios } from '../../../../Utilities';
-import logo from '../image/logoSustento.jpeg'
-import '../Login/login.css'
+
 /*
   module.exports = class Login .....
 */
@@ -48,8 +47,7 @@ export default class PrdAdd extends Component{
   render(){
     return (
       <section>
-        <h1>Crear Nuevo Producto</h1>
-        <img className='logo' src={logo}></img>
+
         <section className="main fix640">
         <Campo
             caption="Nombre Producto"

@@ -19,7 +19,7 @@ import pedidos from './Components/Pages/Private/pedidos/pedidos';
 import entregar from './Components/Pages/Private/entregar/entregar';
 import mantenimiento from './Components/Pages/Private/mantenimiento/mantenimiento';
 import detailcar from './Components/Pages/Private/detailcar/detailcar';
-import prdAdd from './Components/Pages/PrivateRoute/MantenimientosProd/PrdAdd';
+import prdAdd from './Components/Pages/Private/MantenimientosProd/PrdAdd';
 
 
 class App extends Component {
