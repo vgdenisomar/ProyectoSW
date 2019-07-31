@@ -9,24 +9,18 @@ import { paxios } from '../../../../Utilities';
 /*
   module.exports = class Login .....
 */
-export default class PrdUpdate extends Component{
-  constructor(){
+export default class DetailUpdate extends Component {
+  constructor() {
     super();
     //definición del estado inicial
     this.state = {
-      nombre_Product:'',
       descripcion: '',
-      Precio_Original:0,
-      Precio_Oferta:0,
-      Cantidad_Producto:0,
-      Fecha_Vencimiento_Prod:Date,
-      error:false
+      error: false
     };
     //Para el autobinding
     this.onChangeHandler = this.onChangeHandler.bind(this);
-    this.onModifyBtnClick = this.onModifyBtnClick.bind(this);
+    this.onSaveBtnClick = this.onSaveBtnClick.bind(this);
   }
-
   onChangeHandler(e){
     const {name, value} = e.target;
     //validar
