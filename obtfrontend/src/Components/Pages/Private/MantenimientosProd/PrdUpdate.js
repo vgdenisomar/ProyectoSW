@@ -4,13 +4,12 @@
 import React, { Component } from 'react';
 import Button from '../../../Common/Btns/Buttons';
 import Campo from '../../../Common/Campo/Campo';
-import { naxios } from '../../../../Utilities';
-import logo from '../image/logoSustento.jpeg'
-import '../Login/login.css'
+import { paxios } from '../../../../Utilities';
+
 /*
   module.exports = class Login .....
 */
-export default class PrdAdd extends Component{
+export default class PrdUpdate extends Component{
   constructor(){
     super();
     //definición del estado inicial
@@ -25,7 +24,7 @@ export default class PrdAdd extends Component{
     };
     //Para el autobinding
     this.onChangeHandler = this.onChangeHandler.bind(this);
-    this.onSaveBtnClick = this.onSaveBtnClick.bind(this);
+    this.onModifyBtnClick = this.onModifyBtnClick.bind(this);
   }
 
   onChangeHandler(e){
@@ -35,21 +34,20 @@ export default class PrdAdd extends Component{
   }
   onSaveBtnClick(e){
     const {nombre_Product,descripcion,Precio_Original,Precio_Oferta,Cantidad_Producto,Fecha_Vencimiento_Prod} = this.state;
-    naxios.post('/api/Products', {nombre_Product,descripcion,Precio_Original,Precio_Oferta,Cantidad_Producto,Fecha_Vencimiento_Prod })
+    paxios.post('/api/Products', {nombre_Product,descripcion,Precio_Original,Precio_Oferta,Cantidad_Producto,Fecha_Vencimiento_Prod })
     .then(({data})=>{
       this.props.history.push("/mantenimiento");
     })
     .catch((error)=>{
       console.log(error);
-      this.setState({error:"Error al crear nuevo Producto. Intente nuevamente."})
+      this.setState({error:"Error al Obtener el Producto. Intente nuevamente."})
     })
   }
 
   render(){
     return (
       <section>
-        <h1>Crear Nuevo Producto</h1>
-        <img className='logo' src={logo}></img>
+      <h1>{this.props.match.params.id} </h1>
         <section className="main fix640">
         <Campo
             caption="Nombre Producto"
@@ -91,7 +89,7 @@ export default class PrdAdd extends Component{
           {(this.state.error && true)?(<div className="error">{this.state.error}</div>):null}
           <section className="action">
               <Button
-                caption="Crear Producto"
+                caption="Modificar Producto"
                 onClick={this.onSaveBtnClick}
                 customClass="primary"
               />

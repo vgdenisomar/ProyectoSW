@@ -20,6 +20,7 @@ import entregar from './Components/Pages/Private/entregar/entregar';
 import mantenimiento from './Components/Pages/Private/mantenimiento/mantenimiento';
 import detailcar from './Components/Pages/Private/detailcar/detailcar';
 import prdAdd from './Components/Pages/Private/MantenimientosProd/PrdAdd';
+import prdUpdate from './Components/Pages/Private/MantenimientosProd/PrdUpdate';
 
 
 class App extends Component {
@@ -81,6 +82,7 @@ class App extends Component {
           <PrivateRoute path="/mantenimiento" auth={this.state.auth}  component={mantenimiento} />
           <PrivateRoute path="/detailcar" auth={this.state.auth}  component={detailcar} />
           <PrivateRoute path="/prdadd" auth={this.state.auth}  component={prdAdd} />
+          <PrivateRoute path="/prdUpdate/id:" auth={this.state.auth}  component={prdUpdate} />
 
             </AnimatedSwitch>
           <NavBar auth={this.state.auth} />
