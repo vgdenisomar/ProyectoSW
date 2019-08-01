@@ -47,7 +47,8 @@ export default class PrdAdd extends Component{
   render(){
     return (
       <section>
-        <section className="main fix640">
+          <h1>Agregar Producto</h1>
+        <section className="main fix640 overr top1">
         <Campo
             caption="Nombre Producto"
             value={this.state.nombre_Product}

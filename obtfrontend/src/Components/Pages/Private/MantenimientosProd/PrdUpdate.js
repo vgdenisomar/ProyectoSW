@@ -63,8 +63,8 @@ export default class DetailUpdate extends Component {
   render(){
     return (
       <section>
-      <h1>{this.props.match.params.id} </h1>
-        <section className="main fix640">
+      <h1>Modificar Producto </h1>
+        <section className="main fix640 overr top1">
         <Campo
             caption="Nombre Producto"
             value={this.state.nombre_Product}

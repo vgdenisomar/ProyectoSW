@@ -62,7 +62,7 @@ export default class Login extends Component {
     return (
       <section>
         <h1>Sustento
-            <Link to="detailcar">
+            <Link to="prdadd">
             <IoIosAdd size="1.2em" />
           </Link>
         </h1>
@@ -70,40 +70,15 @@ export default class Login extends Component {
           {things.length <= 0
             ? 'Cargando'
             : things.map((dat) => (
-              <div className="thingItem" key={dat._id}>
-                <img className="imagen" src="https://titania.marfeel.com/statics/i/ps/www.ecestaticos.com/imagestatic/clipping/78e/458/78e458c5a29ae47ee828218afc325961/por-que-el-desayuno-es-la-comida-mas-importante-si-quieres-estar-delgado.jpg?mtime=1500459950"></img>
-                <div className="thingItem2" key={dat._id}>
+              <div className="thingItem_man" key={dat._id}>
+              <span> {dat.nombre_Product}</span>
+              <span className="updateThing">
+                <Link to={`/prdUpdate/${dat._id}`}>
+                  <IoIosInformationCircleOutline size="2em"/>
+                </Link>
+              </span>
+            </div>
 
-                  <span className="iconoadd"><Link to={`/prdUpdate/${dat._id}`}>
-              <IoIosInformationCircleOutline size="2em"/>
-            </Link></span>
-
-                  <div className="span">
-                    <span> {dat.nombre_Product}</span>
-                  </div>
-
-                  <div className="span">
-                    <span> {dat.descripcion}</span>
-                  </div>
-
-
-                  <div className="span">
-                    <span>Precio Original: {dat.Precio_Original}</span>
-                  </div>
-
-                  <div className="span">
-                    <span>Precio Oferta: {dat.Precio_Oferta}</span>
-                  </div>
-
-                  <div className="span">
-                    <span>Cantidad: {dat.Cantidad_Producto}</span>
-                  </div>
-
-
-
-
-                </div>
-              </div>
             ))}
         </section>
 

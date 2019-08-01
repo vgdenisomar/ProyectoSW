@@ -27,7 +27,6 @@ div a{
     justify-content: space-between;
     float: left;
     width: 320px;
-    
   }
 
   .thingItem:hover{
@@ -39,6 +38,34 @@ div a{
     font-size: 18px;
     font-weight: bold;
   }
+
+  .thingItem_man {
+    display: flex;
+    box-sizing: 1px;
+    padding: 1rem;
+    border-bottom: 1px solid #000;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .thingItem_man:hover{
+    box-shadow: 1px 1px 3px 3px gray;
+}
+
+.thingItem span:first-child {
+  padding-right: 1.5rem;
+}
+.center {
+  justify-content: center;
+}
+.addThing a {
+  color: #fff;
+}
+.updateThing a {
+  color: #3e549c;
+}
+
   .center{
     justify-content: center;
   }
@@ -64,6 +91,9 @@ div a{
 }
 
 .overr{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   height: calc(100vh - 128px);
   padding: 0px;
   overflow: auto;
