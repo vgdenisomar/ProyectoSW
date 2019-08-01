@@ -66,7 +66,7 @@ export default class Login extends Component {
             <IoIosAdd size="1.2em" />
           </Link>
         </h1>
-        <section className="overr">
+        <section className="overr2">
           {things.length <= 0
             ? 'Cargando'
             : things.map((dat) => (

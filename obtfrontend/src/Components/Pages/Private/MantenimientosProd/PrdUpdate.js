@@ -64,7 +64,7 @@ export default class DetailUpdate extends Component {
     return (
       <section>
       <h1>Modificar Producto </h1>
-        <section className="main fix640 overr top1">
+        <section className="main fix640 overr2 top1">
         <Campo
             caption="Nombre Producto"
             value={this.state.nombre_Product}
