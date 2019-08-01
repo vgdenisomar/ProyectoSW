@@ -83,7 +83,7 @@ export default class Login extends Component {
                   </div>
 
                   <div className="span">
-                    <span> {dat.Descripcion}</span>
+                    <span> {dat.descripcion}</span>
                   </div>
 
 
