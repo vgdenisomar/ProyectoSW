@@ -31,6 +31,14 @@ router.get('/', (req, res, next)=>{
   });
 });
 
+router.get('/mante', (req, res, next)=>{
+  var query = {"by": new ObjectID(req.user._id)}
+  ProductsColl.find(query).toArray((err, things)=>{
+    if(err) return res.status(200).json([]);
+    return res.status(200).json(things);
+  });
+});// get ById
+
   router.get('/page', (req, res, next) => {
     getProducts(1, 50, res);
   });
@@ -75,6 +83,7 @@ router.post('/', (req, res, next)=>{
   var newElement = Object.assign({},
     ProductsStruct,
     req.body,
+    {"by":new ObjectID(_id)}
   );
 
   ProductsColl.insertOne(newElement, {} , (err, result)=>{
@@ -89,8 +98,10 @@ router.post('/', (req, res, next)=>{
 
 
 router.put('/:idElemento', (req, res, next) => {
+  var {_id} = req.user;
+  req.body.by= new ObjectID(_id);
   var query = {"_id": new ObjectID(req.params.idElemento)};
-  var update = { "$set": req.body, "$inc":{"visited": 1}};
+  var update = { "$set": req.body,"$inc":{"visited": 1},};
   ProductsColl.updateOne(query, update, (err, rst) => {
     if(err){
       console.log(err);

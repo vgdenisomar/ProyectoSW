@@ -33,7 +33,7 @@ export default class Login extends Component {
     }
   }
   getDataFromDb = () => {
-    const uri = `/api/Products`;
+    const uri = `/api/Products/mante`;
     paxios.get(uri)
       .then(
         ({ data }) => {
