@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../products/products.css'
 import { Link } from 'react-router-dom';
-import { IoIosCloseCircleOutline, IoIosInformationCircleOutline, IoIosCheckmarkCircleOutline, IoMdAddCircle } from 'react-icons/io';
+import { IoIosCloseCircleOutline, IoIosInformationCircleOutline, IoIosSync, IoMdAddCircle } from 'react-icons/io';
 import { paxios } from '../../../../Utilities';
 /*
   module.exports = class Login .....
@@ -34,7 +34,8 @@ export default class Login extends Component{
     }
   }
   getDataFromDb = () => {
-    const uri = `/api/pedidos/entregar`;
+    const { match: {params}} = this.props;
+    const uri = `/api/pedidos/detalle/${params.id}`;
     paxios.get(uri)
       .then(
         ({ data }) => {
@@ -46,6 +47,7 @@ export default class Login extends Component{
           )
         })
   };
+
     render(){
         const { things } = this.state;
         return (
@@ -56,14 +58,8 @@ export default class Login extends Component{
             ? 'Cargando'
             : things.map((dat) => (
               <div className="thingItem_man" key={dat._id}>
-              <span>Entrega numero {dat._id}</span>
-              <span className="updateThing">
-                <Link to={`/detallePedido/${dat._id}`}>
-                  <IoIosInformationCircleOutline size="2em"/>
-                </Link>
-              </span>
+              <span>{dat.nombre_Product}</span>
             </div>
-            
 
             ))}
         </section>

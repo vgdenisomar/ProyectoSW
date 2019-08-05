@@ -26,6 +26,7 @@ const securityApi = require('./security')(db);
 const productsApi = require('./Products')(db);
 
 const carApi = require('./car')(db);
+const pedidosApi = require('./pedidos')(db);
 
 
 
@@ -39,6 +40,7 @@ router.get('/', (req, res, next)=>{
 router.use('/security', securityApi);
 router.use('/Products', passport.authenticate('jwt', {session:false}) , productsApi);
 router.use('/car', passport.authenticate('jwt', {session:false}) , carApi);
+router.use('/pedidos', passport.authenticate('jwt', {session:false}) , pedidosApi);
 
 // router.get('/hello', (req, res, next)=>{
 //   res.status(200).json({"msg":"Hola Mundo"});

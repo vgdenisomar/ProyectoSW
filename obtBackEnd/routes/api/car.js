@@ -32,6 +32,7 @@ function ProductsInit(db) {
                 "codProd":  new ObjectID(req.body.codProd),
                 "nombre_Product":req.body.nombre_Product,
                 "by": new ObjectID(_id),
+                "proveedor":new ObjectID(req.body.proveedor),
             }
         );
         ProductsColl.insertOne(newElement, {}, (err, result) => {

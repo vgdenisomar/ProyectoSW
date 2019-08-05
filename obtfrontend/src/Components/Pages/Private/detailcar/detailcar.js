@@ -46,6 +46,17 @@ export default class Login extends Component{
       })
   };
   
+  pedido=()=>{
+    paxios.post(`/api/pedidos`)
+    .then(({ data }) => {
+      console.log("Enviado");
+    })
+    .catch((error) => {
+      console.log(error);
+      this.setState({ error: "Error al crear nuevo Thing" });
+    })
+  }
+
   delete=(codProd)=>{
     console.log(codProd);
     paxios.delete(`/api/car/${codProd}`)
@@ -63,8 +74,8 @@ export default class Login extends Component{
       return (
         <section>
           <h1>Sustento
-          <Link to="detailcar">
-            <IoIosCart size="1.2em"/>
+          <Link className="linke" to="detailcar">
+            <button className="buttonpagar" onClick={this.pedido}>Hacer pedido</button>
           </Link>
           </h1>
           <section className="overr">

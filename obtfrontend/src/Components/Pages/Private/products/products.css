@@ -90,6 +90,24 @@ div a{
   color: white;
 }
 
+
+.buttonpagar{
+  background-color: #3e549c;
+  color:white;
+  height: 50px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.linke {
+  background-color: inherit;
+  color: #3e549c;
+  border: none;
+  text-decoration: underline;
+}
+
 .overr{
   display: flex;
   flex-wrap: wrap;
@@ -105,4 +123,8 @@ div a{
   padding: 0px;
   overflow: auto;
   margin-top: -1rem;
+}
+
+.codigo{  
+  text-align: center;
 }

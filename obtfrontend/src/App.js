@@ -16,11 +16,13 @@ import products from './Components/Pages/Private/products/products';
 import donaciones from './Components/Pages/Private/donaciones/donaciones';
 import perfil from './Components/Pages/Private/perfil/perfil';
 import pedidos from './Components/Pages/Private/pedidos/pedidos';
-import entregar from './Components/Pages/Private/entregar/entregar';
+import entregar from './Components/Pages/Private/pedidos/entregar';
 import mantenimiento from './Components/Pages/Private/mantenimiento/mantenimiento';
 import detailcar from './Components/Pages/Private/detailcar/detailcar';
 import prdAdd from './Components/Pages/Private/MantenimientosProd/PrdAdd';
 import prdUpdate from './Components/Pages/Private/MantenimientosProd/PrdUpdate';
+import detallePedido from './Components/Pages/Private/pedidos/detallePedido';
+import pagar from './Components/Pages/Private/pedidos/pagar';
 
 
 class App extends Component {
@@ -83,7 +85,8 @@ class App extends Component {
           <PrivateRoute path="/detailcar" auth={this.state.auth}  component={detailcar} />
           <PrivateRoute path="/prdadd" auth={this.state.auth}  component={prdAdd} />
           <PrivateRoute path="/prdUpdate/:id" auth={this.state.auth}  component={prdUpdate} />
-
+          <PrivateRoute path="/detallePedido/:id" auth={this.state.auth}  component={detallePedido} />
+          <PrivateRoute path="/pagar/:id" auth={this.state.auth}  component={pagar} />
             </AnimatedSwitch>
           <NavBar auth={this.state.auth} />
         </section>
