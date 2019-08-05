@@ -15,25 +15,35 @@ function ProductsInit(db) {
         "by": ''
     };
 
+
+
     router.get('/', (req, res, next) => {
         var { _id} = req.user;
         var query = {"by": new ObjectID(_id)}
-        ProductsColl.find(query).toArray((err, things) => {
+        ProductsColl.aggregate(
+            [
+                 {$match: query},
+                 {$group: {_id: "$codProd", total: { $sum:1}, nombre_Product:{"$first":"$nombre_Product"},codProd:{"$first":"$codProd"}} }
+            ]
+       ).toArray((err, things) => {
+         console.log(things);
             if (err) return res.status(200).json([]);
             return res.status(200).json(things);
         });
     });
 
     router.post('/', (req, res, next) => {
-        var { _id} = req.user;
+        var { _id,name} = req.user;
         var newElement = Object.assign({},
             ProductsStruct,
             {
                 "codProd":  new ObjectID(req.body.codProd),
                 "nombre_Product":req.body.nombre_Product,
                 "by": new ObjectID(_id),
+                "name":name,
                 "proveedor":new ObjectID(req.body.proveedor),
             }
+
         );
         ProductsColl.insertOne(newElement, {}, (err, result) => {
             if (err) {
@@ -60,7 +70,7 @@ function ProductsInit(db) {
         // } ); //
         // res.status(200).json({ 'msg': 'Elemento ' + id + ' fué eleminido!!!' });
       });// put /
-      
+
     return router;
 }
 module.exports = ProductsInit;

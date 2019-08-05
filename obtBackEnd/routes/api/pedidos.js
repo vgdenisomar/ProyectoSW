@@ -16,21 +16,21 @@ function ProductsInit(db) {
         FacturaDetColl.aggregate(
             [
                  {$match: query},
-                 {$group: {_id: "$factura", total: { $sum:1}} }
+                 {$group: {_id: "$factura", total: { $sum:1}, name:{"$first":"$name"}} }
             ]
        ).toArray((err, things) => {
             if (err) return res.status(200).json([]);
             return res.status(200).json(things);
         });
     });
-    
+
     router.get('/entregar', (req, res, next) => {
         var { _id} = req.user;
         var query = {"proveedor": new ObjectID(_id), "estado":"ENT"}
         FacturaDetColl.aggregate(
             [
                  {$match: query},
-                 {$group: {_id: "$factura", total: { $sum:1}} }
+                 {$group: {_id: "$factura", total: { $sum:1},name:{"$first":"$name"}} }
             ]
        ).toArray((err, things) => {
             if (err) return res.status(200).json([]);
@@ -61,8 +61,8 @@ function ProductsInit(db) {
                 if (err) throw err;
                 console.log("Number of documents inserted: " + res.insertedCount);
               });
-                           
-              var query = {"by": new ObjectID(_id)}   
+
+              var query = {"by": new ObjectID(_id)}
               ProductsColl.find(query,{projection:{_id:0,by:0}}).toArray((err,thingsw)=>{
                 ejemplo = thingsw.map(item=>{
                     item.factura=new ObjectID(req.user.fac);
@@ -85,9 +85,9 @@ function ProductsInit(db) {
                 }
                 return res.status(200).json(result);
               });
-            
+
         });
-        
+
     });
     router.put('/aceptar', (req, res, next) => {
         var {_id} = req.user;
@@ -101,10 +101,10 @@ function ProductsInit(db) {
             }
             return res.status(200).json(rst);
           });
-        
-        
+
+
     });
-    
+
     router.put('/pagar', (req, res, next) => {
         var {_id} = req.user;
         req.body.by= new ObjectID(_id);
@@ -117,8 +117,8 @@ function ProductsInit(db) {
             }
             return res.status(200).json(rst);
           });
-        
-        
+
+
     });
 
     router.put('/cancelar', (req, res, next) => {
@@ -133,8 +133,8 @@ function ProductsInit(db) {
             }
             return res.status(200).json(rst);
           });
-        
-        
+
+
     });
 
 
@@ -156,7 +156,7 @@ function ProductsInit(db) {
         // } ); //
         // res.status(200).json({ 'msg': 'Elemento ' + id + ' fué eleminido!!!' });
       });// put /
-      
+
     return router;
 }
 module.exports = ProductsInit;

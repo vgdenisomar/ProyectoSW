@@ -8,7 +8,7 @@ import { paxios } from '../../../../Utilities';
 */
 export default class Login extends Component{
 
-  
+
   constructor() {
     super();
     this.state = {
@@ -88,7 +88,7 @@ export default class Login extends Component{
             ? 'No tiene ningun pedido'
             : things.map((dat) => (
               <div className="thingItem_man" key={dat._id}>
-              <span>Nuevo pedido numero {dat._id}</span>
+              <span>Nuevo pedido numero {dat.name}</span>
               <span className="updateThing">
                 <Link to={`/detallePedido/${dat._id}`}>
                   <IoIosInformationCircleOutline size="2em"/>
@@ -101,7 +101,7 @@ export default class Login extends Component{
                   <IoIosCloseCircleOutline  className="iconoadd2" onClick={this.cancelar.bind(this, dat._id)} size="2em"/>
               </span>
             </div>
-            
+
 
             ))}
         </section>

@@ -8,7 +8,7 @@ import { paxios } from '../../../../Utilities';
 */
 export default class Login extends Component{
 
-  
+
   constructor() {
     super();
     this.state = {
@@ -56,14 +56,14 @@ export default class Login extends Component{
             ? 'No tiene ningun pedido'
             : things.map((dat) => (
               <div className="thingItem_man" key={dat._id}>
-              <span>Entrega numero {dat._id}</span>
+              <span>Entregar a: {dat.name}</span>
               <span className="updateThing">
                 <Link to={`/pagar/${dat._id}`}>
                   <IoIosArrowForward size="2em"/>
                 </Link>
               </span>
             </div>
-            
+
 
             ))}
         </section>

@@ -45,7 +45,7 @@ export default class Login extends Component{
         )
       })
   };
-  
+
   pedido=()=>{
     paxios.post(`/api/pedidos`)
     .then(({ data }) => {
@@ -83,12 +83,13 @@ export default class Login extends Component{
           ? 'Seleccione un producto para realizar su compra'
           : things.map((dat) => (
               <div className="thingItem" key={dat._id}>
+                <span> {dat.total}</span>
                 <span> {dat.nombre_Product}</span>
                 <MdDelete onClick={this.delete.bind(this,dat.codProd)} size="2em"/>
               </div>
             ))}
           </section>
-         
+
         </section>
       );
 }
