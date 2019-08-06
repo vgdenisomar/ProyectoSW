@@ -13,6 +13,9 @@ export default class Login extends Component{
     super();
     this.state={
       things:[],
+      subtotal:0,
+      isv:0,
+      total:0,
       hasMore:true,
       page:1,
       intervalIsSet: false,
@@ -43,6 +46,20 @@ export default class Login extends Component{
             things:data
           }
         )
+        const { things } = this.state;
+        var a=0,b=0,c=0,d=0;
+        things.map((dat)=>{
+          b=parseInt(dat.precio)*parseInt(dat.total);
+          a+=b;
+          c=a*0.15;
+          d=a+c;
+          this.setState({
+            subtotal:a,
+            isv:c,
+            total:d
+          })
+        })
+
       })
   };
 
@@ -87,7 +104,7 @@ export default class Login extends Component{
             </div>
           {things.length <= 0
           ? 'Seleccione un producto para realizar su compra'
-          : things.map((dat) => (
+          : things.map((dat)=> (
               <div className="thingItem_man" key={dat._id}>
                 <span className="spandetail"> {dat.nombre_Product}</span>
                 <span className=""> {dat.total}</span>

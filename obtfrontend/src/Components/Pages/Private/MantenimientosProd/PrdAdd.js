@@ -33,8 +33,8 @@ export default class PrdAdd extends Component{
     this.setState({...this.state,[name]:value});
   }
   onSaveBtnClick(e){
-    const {nombre_Product,descripcion,Precio_Original,Precio_Oferta,Cantidad_Producto,Fecha_Vencimiento_Prod} = this.state;
-    paxios.post('/api/Products', {nombre_Product,descripcion,Precio_Original,Precio_Oferta,Cantidad_Producto,Fecha_Vencimiento_Prod })
+    const {nombre_Product,descripcion,Precio_Original,Precio_Oferta,Cantidad_Producto,Fecha_Vencimiento_Prod, imagen} = this.state;
+    paxios.post('/api/Products', {nombre_Product,descripcion,Precio_Original,Precio_Oferta,Cantidad_Producto,Fecha_Vencimiento_Prod, imagen})
     .then(({data})=>{
       this.props.history.push("/mantenimiento");
     })
@@ -59,6 +59,12 @@ export default class PrdAdd extends Component{
           caption="Descripcion del Producto"
           value={this.state.descripcion}
           name="descripcion"
+          onChange={this.onChangeHandler}
+         />
+                  <Campo
+          caption="URL de imagen"
+          value={this.state.imagen}
+          name="imagen"
           onChange={this.onChangeHandler}
          />
           <Campo
