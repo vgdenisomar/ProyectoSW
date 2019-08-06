@@ -78,13 +78,18 @@ export default class Login extends Component{
             <button className="buttonpagar" onClick={this.pedido}>Hacer pedido</button>
           </Link>
           </h1>
-          <section className="overr">
+          <section className="overr2">
+            <div className="thingItem_man2">
+              <span>Nombre</span>
+              <span>Cantidad</span>
+              <span></span>
+            </div>
           {things.length <= 0
           ? 'Seleccione un producto para realizar su compra'
           : things.map((dat) => (
-              <div className="thingItem" key={dat._id}>
-                <span> {dat.total}</span>
+              <div className="thingItem_man" key={dat._id}>
                 <span> {dat.nombre_Product}</span>
+                <span> {dat.total}</span>
                 <MdDelete onClick={this.delete.bind(this,dat.codProd)} size="2em"/>
               </div>
             ))}

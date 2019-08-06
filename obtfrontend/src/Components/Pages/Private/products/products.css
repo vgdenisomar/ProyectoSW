@@ -31,6 +31,8 @@ div a{
 
   .thingItem:hover{
     box-shadow: 1px 1px 3px 3px gray;
+      top: 0;
+      left: -100%;
 }
 
   .thingItem2 div span{
@@ -51,6 +53,18 @@ div a{
 
   .thingItem_man:hover{
     box-shadow: 1px 1px 3px 3px gray;
+}
+
+.thingItem_man2 {
+  background-color: white;
+  display: flex;
+  box-sizing: 1px;
+  padding: 1rem;
+  border-bottom: 1px solid #000;
+  min-height: 3rem;
+  align-items: center;
+  font-weight: bold;
+  justify-content: space-between;
 }
 
 .thingItem span:first-child {
@@ -82,9 +96,6 @@ div a{
   height: 220px;
 }
 
-.iconoadd:hover{
-}
-
 .iconoadd2:hover{
   background-color:#c0e359;
   color: white;
@@ -92,8 +103,9 @@ div a{
 
 
 .buttonpagar{
-  background-color: #3e549c;
-  color:white;
+  background-color: #c0e359;
+  font-weight: bold;
+  color:black;
   height: 50px;
   display:flex;
   flex-direction: column;
@@ -101,11 +113,16 @@ div a{
   align-items: center;
 }
 
+.buttonpagar:hover{
+  background: rgba(0, 0, 0, 0.1);
+  color: black;
+}
+
 .linke {
   background-color: inherit;
-  color: #3e549c;
+  color: #fff;
   border: none;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .overr{

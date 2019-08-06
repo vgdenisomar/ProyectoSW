@@ -97,6 +97,10 @@ export default class Login extends Component {
                     <span>Cantidad: {dat.Cantidad_Producto}</span>
                   </div>
 
+                  <div className="span">
+                    <span>Descripcion: {dat.descripcion}</span>
+                  </div>
+
 
 
 
