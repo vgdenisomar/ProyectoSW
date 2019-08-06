@@ -67,6 +67,18 @@ div a{
   justify-content: space-between;
 }
 
+.thingItem_man3 {
+  background-color: rgb(214, 213, 213);
+  display: flex;
+  box-sizing: 1px;
+  padding: 1rem;
+  border-bottom: 1px solid #000;
+  min-height: 3rem;
+  align-items: center;
+  font-weight: bold;
+  justify-content: space-between;
+}
+
 .thingItem span:first-child {
   padding-right: 1.5rem;
 }
@@ -103,14 +115,15 @@ div a{
 
 
 .buttonpagar{
-  background-color: #c0e359;
+  background-color: #648b68;
   font-weight: bold;
-  color:black;
-  height: 50px;
+  color:#fff;
+  height: 55px;
   display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 17px;
 }
 
 .buttonpagar:hover{

@@ -127,7 +127,7 @@ export default class Login extends Component{
                 <span> {this.state.isv} </span>
            </div>
 
-           <div className="thingItem_man2">
+           <div className="thingItem_man3">
                 <span>Total a Pagar:</span>
                 <span> {this.state.total} </span>
            </div>
