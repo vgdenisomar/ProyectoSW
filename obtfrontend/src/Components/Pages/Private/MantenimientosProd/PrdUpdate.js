@@ -19,6 +19,7 @@ export default class DetailUpdate extends Component {
       Precio_Original:0,
       Precio_Oferta:0,
       Cantidad_Producto:0,
+      imagen:'',
       Fecha_Vencimiento_Prod:Date,
       error: false
     };
@@ -49,8 +50,8 @@ export default class DetailUpdate extends Component {
     this.setState({...this.state,[name]:value});
   }
   onSaveBtnClick(e) {
-    const { nombre_Product,descripcion,Precio_Original,Precio_Oferta,Cantidad_Producto,Fecha_Vencimiento_Prod, _id } = this.state;
-    paxios.put(`/api/products/${_id}`, { nombre_Product,descripcion,Precio_Original,Precio_Oferta,Cantidad_Producto,Fecha_Vencimiento_Prod })
+    const { nombre_Product,descripcion,Precio_Original,Precio_Oferta,Cantidad_Producto,Fecha_Vencimiento_Prod, _id, imagen} = this.state;
+    paxios.put(`/api/products/${_id}`, { nombre_Product,descripcion,Precio_Original,Precio_Oferta,Cantidad_Producto,Fecha_Vencimiento_Prod, imagen})
       .then(({ data }) => {
         this.props.history.push("/mantenimiento");
       })
@@ -75,6 +76,12 @@ export default class DetailUpdate extends Component {
           caption="Descripcion del Producto"
           value={this.state.descripcion}
           name="descripcion"
+          onChange={this.onChangeHandler}
+         />
+           <Campo
+          caption="URL de imagen"
+          value={this.state.imagen}
+          name="imagen"
           onChange={this.onChangeHandler}
          />
           <Campo
