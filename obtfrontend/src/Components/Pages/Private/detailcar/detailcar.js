@@ -4,6 +4,9 @@ import {Link} from 'react-router-dom';
 import { IoIosAdd,IoIosCart, IoIosSync, IoMdAddCircle } from 'react-icons/io';
 import { paxios } from '../../../../Utilities';
 import {MdDelete } from "react-icons/md";
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
+
 /*
   module.exports = class Login .....
 */
@@ -20,7 +23,26 @@ export default class Login extends Component{
       page:1,
       intervalIsSet: false,
       itemsToLoad:10
-    }}
+    }
+    this.addNotification = this.addNotification.bind(this);
+    this.notificationDOMRef = React.createRef();
+  }
+
+  
+  addNotification() {
+    this.notificationDOMRef.current.addNotification({
+      title: "Notificacion",
+      message: "Pedido realizado!",
+      type: "success",
+      insert: "top",
+      container: "bottom-right",
+      animationIn: ["animated", "fadeIn"],
+      animationOut: ["animated", "fadeOut"],
+      dismiss: { duration: 2000 },
+      dismissable: { click: true }
+    });
+  }
+
   componentDidMount() {
     this.getDataFromDb();
     if (!this.state.intervalIsSet) {
@@ -72,6 +94,10 @@ export default class Login extends Component{
         isv:0,
         total:0
       })
+      this.addNotification();
+      window.setTimeout(() => {
+          this.props.history.push("/productos");
+       }, 1000)
     })
     .catch((error) => {
       console.log(error);
@@ -100,6 +126,7 @@ export default class Login extends Component{
             <button className="buttonpagar" onClick={this.pedido}>Hacer pedido</button>
           </Link>
           </h1>
+          <ReactNotification ref={this.notificationDOMRef} />
           <section className="overr2">
             <div className="thingItem_man2">
               <span>Nombre</span>

@@ -5,7 +5,8 @@ import React, { Component } from 'react';
 import Button from '../../../Common/Btns/Buttons';
 import Campo from '../../../Common/Campo/Campo';
 import { paxios } from '../../../../Utilities';
-
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 /*
   module.exports = class Login .....
 */
@@ -26,6 +27,23 @@ export default class DetailUpdate extends Component {
     //Para el autobinding
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.onSaveBtnClick = this.onSaveBtnClick.bind(this);
+    this.addNotification = this.addNotification.bind(this);
+    this.notificationDOMRef = React.createRef();
+  }
+
+
+  addNotification() {
+    this.notificationDOMRef.current.addNotification({
+      title: "Notificacion",
+      message: "Producto Modificado!",
+      type: "success",
+      insert: "top",
+      container: "bottom-right",
+      animationIn: ["animated", "fadeIn"],
+      animationOut: ["animated", "fadeOut"],
+      dismiss: { duration: 2000 },
+      dismissable: { click: true }
+    });
   }
 
   componentDidMount(){
@@ -53,7 +71,10 @@ export default class DetailUpdate extends Component {
     const { nombre_Product,descripcion,Precio_Original,Precio_Oferta,Cantidad_Producto,Fecha_Vencimiento_Prod, _id, imagen} = this.state;
     paxios.put(`/api/products/${_id}`, { nombre_Product,descripcion,Precio_Original,Precio_Oferta,Cantidad_Producto,Fecha_Vencimiento_Prod, imagen})
       .then(({ data }) => {
-        this.props.history.push("/mantenimiento");
+        this.addNotification();
+        window.setTimeout(() => {
+          this.props.history.push("/mantenimiento");
+       }, 1000)
       })
       .catch((error) => {
         console.log(error);
@@ -65,6 +86,7 @@ export default class DetailUpdate extends Component {
     return (
       <section>
       <h1>Modificar Producto </h1>
+      <ReactNotification ref={this.notificationDOMRef} />
         <section className="main fix640 overr2 top1">
         <Campo
             caption="Nombre Producto"
