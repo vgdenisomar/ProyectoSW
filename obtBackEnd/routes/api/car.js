@@ -23,7 +23,7 @@ function ProductsInit(db) {
         ProductsColl.aggregate(
             [
                  {$match: query},
-                 {$group: {_id: "$codProd", total: { $sum:1}, nombre_Product:{"$first":"$nombre_Product"},codProd:{"$first":"$codProd"}} }
+                 {$group: {_id: "$codProd", total: { $sum:1}, nombre_Product:{"$first":"$nombre_Product"},codProd:{"$first":"$codProd"}, precio:{"$first":"$precio"}} }
             ]
        ).toArray((err, things) => {
          console.log(things);
