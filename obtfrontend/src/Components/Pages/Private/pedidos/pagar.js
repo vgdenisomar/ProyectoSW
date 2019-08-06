@@ -112,6 +112,8 @@ export default class Login extends Component {
                         : things.map((dat) => (
                             <div className="thingItem_man" key={dat._id}>
                                 <span>{dat.nombre_Product}</span>
+                                <span>{dat.total}</span>
+                                <span>{dat.precio}</span>
                             </div>
 
                         ))}

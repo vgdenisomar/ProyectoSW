@@ -42,11 +42,15 @@ function ProductsInit(db) {
         var { _id} = req.user;
         var query = {"factura": new ObjectID(req.params.idElemento),"proveedor": new ObjectID(_id)};
         console.log(req.params.idElemento);
-        FacturaDetColl.find(query).toArray((err, things) => {
-            console.log(things);
-            if (err) return res.status(200).json([]);
-            return res.status(200).json(things);
-        });
+        FacturaDetColl.aggregate(
+          [
+               {$match: query},
+               {$group: {_id: "$factura", total: { $sum:1},nombre_Product:{"$first":"$nombre_Product"},precio:{"$first":"$precio"}} }
+          ]
+     ).toArray((err, things) => {
+          if (err) return res.status(200).json([]);
+          return res.status(200).json(things);
+      });
     });
 
     router.post('/', (req, res, next) => {
