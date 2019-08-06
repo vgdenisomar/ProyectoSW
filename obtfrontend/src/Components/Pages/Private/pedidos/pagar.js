@@ -107,8 +107,13 @@ export default class Login extends Component {
             <section>
                 <h1>Factura</h1>
                 <section className="main fix640" className="overr2">
+                <div className="thingItem_man2">
+                            <span>Nombre</span>
+                            <span>Cantidad</span>
+                            <span>Precio</span>  
+                            </div> 
                     {things.length <= 0
-                        ? 'Cargando'
+                        ? 'Cargando'                    
                         : things.map((dat) => (
                             <div className="thingItem_man" key={dat._id}>
                                 <span>{dat.nombre_Product}</span>

@@ -52,7 +52,7 @@ div a{
   }
 
   .thingItem_man:hover{
-    box-shadow: 1px 1px 3px 3px gray;
+    box-shadow: 2px 1px 2px 0.5px gray;
 }
 
 .thingItem_man2 {
