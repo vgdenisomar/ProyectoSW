@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { IoIosCloseCircleOutline, IoIosInformationCircleOutline, IoIosSync, IoMdAddCircle } from 'react-icons/io';
 import { paxios } from '../../../../Utilities';
 import Button from '../../../Common/Btns/Buttons';
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 
 import '../../../../index.css'
 /*
@@ -26,8 +28,38 @@ export default class Login extends Component {
             itemsToLoad: 10
         }
         this.onChangeHandler = this.onChangeHandler.bind(this);
+        this.addNotification = this.addNotification.bind(this);
+        this.notificationDOMRef = React.createRef();
     }
 
+    addNotification() {
+        this.notificationDOMRef.current.addNotification({
+          title: "Notificacion",
+          message: "Pago realizado!",
+          type: "success",
+          insert: "top",
+          container: "bottom-right",
+          animationIn: ["animated", "fadeIn"],
+          animationOut: ["animated", "fadeOut"],
+          dismiss: { duration: 2000 },
+          dismissable: { click: true }
+        });
+      }
+
+      
+    errorNotification() {
+        this.notificationDOMRef.current.addNotification({
+          title: "Notificacion",
+          message: "Codigo invalido!",
+          type: "danger",
+          insert: "top",
+          container: "bottom-right",
+          animationIn: ["animated", "fadeIn"],
+          animationOut: ["animated", "fadeOut"],
+          dismiss: { duration: 2000 },
+          dismissable: { click: true }
+        });
+      }
 
     onChangeHandler(e) {
         const { name, value } = e.target;
@@ -99,7 +131,12 @@ export default class Login extends Component {
             paxios.put(`/api/pedidos/pagar`, { id })
             .then(({ data }) => {
                 console.log("Pagado");
-                this.props.history.push("/entregar");
+                this.addNotification();
+                window.setTimeout(() => {
+                    this.props.history.push("/entregar");
+                 }, 1000)
+                
+
             })
             .catch((error) => {
                 console.log(error);
@@ -107,6 +144,7 @@ export default class Login extends Component {
             })
           }
           else{
+            this.errorNotification();
               console.log("error");
           }
         })
@@ -122,6 +160,7 @@ export default class Login extends Component {
         return (
             <section>
                 <h1>Factura</h1>
+                <ReactNotification ref={this.notificationDOMRef} />
                 <section className="main fix640" className="overr2">
                 <div className="thingItem_man2">
                             <span>Nombre</span>

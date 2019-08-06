@@ -3,6 +3,8 @@ import '../products/products.css'
 import { Link } from 'react-router-dom';
 import { IoIosCloseCircleOutline, IoIosInformationCircleOutline, IoIosCheckmarkCircleOutline, IoIosExit } from 'react-icons/io';
 import { paxios } from '../../../../Utilities';
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 /*
   module.exports = class Login .....
 */
@@ -18,7 +20,25 @@ export default class Login extends Component{
       intervalIsSet: false,
       itemsToLoad: 10
     }
+    this.addNotification = this.addNotification.bind(this);
+    this.notificationDOMRef = React.createRef();
   }
+
+  
+  addNotification() {
+    this.notificationDOMRef.current.addNotification({
+      title: "Notificacion",
+      message: "Pedido Aceptado!",
+      type: "success",
+      insert: "top",
+      container: "bottom-right",
+      animationIn: ["animated", "fadeIn"],
+      animationOut: ["animated", "fadeOut"],
+      dismiss: { duration: 2000 },
+      dismissable: { click: true }
+    });
+  }
+
   componentDidMount() {
     this.getDataFromDb();
     if (!this.state.intervalIsSet) {
@@ -55,6 +75,7 @@ export default class Login extends Component{
     paxios.put(`/api/pedidos/aceptar`,{id})
     .then(({ data }) => {
       console.log("Enviado");
+      this.addNotification();
     })
     .catch((error) => {
       console.log(error);
@@ -83,6 +104,7 @@ export default class Login extends Component{
             <IoIosExit onClick={this.logout} size="1.2em" />
           </Link>
             </h1>
+            <ReactNotification ref={this.notificationDOMRef} />
             <section className="overr2">
           {things.length <= 0
             ? 'No tiene ningun pedido'
