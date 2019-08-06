@@ -19,7 +19,7 @@ div a{
     flex-direction: row;
     flex-wrap: wrap;
     margin: 0.75em;
-    box-shadow: 1px 1px 3px 3px #000;
+    box-shadow: 0.5px 1px 1px 1px gray;
     box-sizing: 1px;
     padding: 1em;
     min-height: 300px;
@@ -30,7 +30,7 @@ div a{
   }
 
   .thingItem:hover{
-    box-shadow: 1px 1px 3px 3px gray;
+    box-shadow: 1px 1px 2px 2px #000;
       top: 0;
       left: -100%;
 }
@@ -48,11 +48,11 @@ div a{
     border-bottom: 1px solid #000;
     min-height: 3rem;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   .thingItem_man:hover{
-    box-shadow: 1px 1px 3px 3px gray;
+    box-shadow: 1px 1px 3px 1px gray;
 }
 
 .thingItem_man2 {
@@ -144,4 +144,8 @@ div a{
 
 .codigo{  
   text-align: center;
+}
+
+.spandetail{
+
 }

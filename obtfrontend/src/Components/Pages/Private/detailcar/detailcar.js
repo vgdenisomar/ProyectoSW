@@ -82,14 +82,16 @@ export default class Login extends Component{
             <div className="thingItem_man2">
               <span>Nombre</span>
               <span>Cantidad</span>
+              <span>Precio</span>
               <span></span>
             </div>
           {things.length <= 0
           ? 'Seleccione un producto para realizar su compra'
           : things.map((dat) => (
               <div className="thingItem_man" key={dat._id}>
-                <span> {dat.nombre_Product}</span>
-                <span> {dat.total}</span>
+                <span className="spandetail"> {dat.nombre_Product}</span>
+                <span className=""> {dat.total}</span>
+                <span className=""> {dat.precio}</span>
                 <MdDelete onClick={this.delete.bind(this,dat.codProd)} size="2em"/>
               </div>
             ))}
