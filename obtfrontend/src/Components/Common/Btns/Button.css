@@ -52,3 +52,14 @@
   text-decoration: underline;
 }
 
+h3{
+  text-align: center;
+}
+
+.imgqr{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+

@@ -59,13 +59,18 @@ export default class Login extends Component{
             {things.length <= 0
                         ? 'Cargando'
                         : things.map((dat) => (
-                            <div className="" key={dat._id}>
-                                <span>!Hola de nuevo {dat.name}!</span>
-                                <img src={dat.qr}></img>
+                            <div key={dat._id}>
+                                <h3>!Hola de nuevo {dat.name}!</h3>
+                                <div className="imgqr" >
+                                  <img src={dat.qr}></img>
+                                </div>
+                                
                             </div>
                           
                         ))}
-            <div>&nbsp;</div>
+            <div>&nbsp;
+
+            </div>
             {(this.props.auth.logged) ? (<div className="half"><Button customClass="primary" onClick={this.logout}><IoIosLogOut/>&nbsp;Logout</Button></div>):null}
           </section>
         );
