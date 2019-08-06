@@ -55,10 +55,10 @@ export default class Login extends Component{
             <h1>Sustento</h1>
             <section className="overr2">
             <div className="thingItem_man2">
-                <span>Nombre</span>
-                <span>Cantidad</span>
-                <span></span>
-             </div> 
+              <span>Nombre</span>
+              <span>Cantidad</span>
+              <span></span>
+            </div>
           {things.length <= 0
             ? 'Cargando'
             : things.map((dat) => (

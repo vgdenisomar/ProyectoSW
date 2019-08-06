@@ -50,9 +50,9 @@ export default class Login extends Component{
         var a=0,b=0,c=0,d=0;
         things.map((dat)=>{
           b=parseInt(dat.precio)*parseInt(dat.total);
-          a+=b;
-          c=a*0.15;
-          d=a+c;
+          a+=(b);
+          c=parseFloat(a*0.15).toFixed(2); 
+          d=(parseFloat(a) + parseFloat(c)).toFixed(2);
           this.setState({
             subtotal:a,
             isv:c,
@@ -67,6 +67,11 @@ export default class Login extends Component{
     paxios.post(`/api/pedidos`)
     .then(({ data }) => {
       console.log("Enviado");
+      this.setState({
+        subtotal:0,
+        isv:0,
+        total:0
+      })
     })
     .catch((error) => {
       console.log(error);
@@ -112,6 +117,21 @@ export default class Login extends Component{
                 <MdDelete onClick={this.delete.bind(this,dat.codProd)} size="2em"/>
               </div>
             ))}
+            <div className="thingItem_man2">
+                <span> Sub Total:</span>
+                <span> {this.state.subtotal} </span>
+           </div>
+
+           <div className="thingItem_man2">
+                <span> ISV (15%):</span>
+                <span> {this.state.isv} </span>
+           </div>
+
+           <div className="thingItem_man2">
+                <span>Total a Pagar:</span>
+                <span> {this.state.total} </span>
+           </div>
+
           </section>
 
         </section>

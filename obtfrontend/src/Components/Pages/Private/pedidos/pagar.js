@@ -17,6 +17,9 @@ export default class Login extends Component {
         this.state = {
             token: '',
             things: [],
+            subtotal:0,
+            isv:0,
+            total:0,
             hasMore: true,
             page: 1,
             intervalIsSet: false,
@@ -57,6 +60,19 @@ export default class Login extends Component {
                             things: data
                         }
                     )
+                        const { things } = this.state;
+                        var a=0,b=0,c=0,d=0;
+                        things.map((dat)=>{
+                          b=parseInt(dat.precio)*parseInt(dat.total);
+                          a+=b;
+                          c=parseFloat(a*0.15).toFixed(2); 
+                          d=(parseFloat(a) + parseFloat(c)).toFixed(2);
+                          this.setState({
+                            subtotal:a,
+                            isv:c,
+                            total:d
+                          })
+                        })    
                 })
     };
 
@@ -122,6 +138,21 @@ export default class Login extends Component {
                             </div>
 
                         ))}
+                            <div className="thingItem_man2">
+                                <span> Sub Total:</span>
+                                <span> {this.state.subtotal} </span>
+                            </div>
+
+                            <div className="thingItem_man2">
+                                <span> ISV (15%):</span>
+                                <span> {this.state.isv} </span>
+                            </div>
+
+                            <div className="thingItem_man2">
+                                <span>Total a Pagar:</span>
+                                <span> {this.state.total} </span>
+                            </div>
+                        
                     <input onChange={this.onChangeHandler} value={this.state.token} className="codigo" name="token" maxLength="6" placeholder="Codigo"></input>
                     <Button
                         caption="Pagar"
