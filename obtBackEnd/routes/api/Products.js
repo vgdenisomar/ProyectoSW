@@ -8,6 +8,9 @@ function ProductsInit(db){
 
 var  ProductsColl = db.collection('products');
 
+var  UserColl = db.collection('users');
+
+
 var ProductsCollection = [];
 
 var ProductsStruct = {
@@ -26,6 +29,15 @@ var ProductsStruct = {
 router.get('/', (req, res, next)=>{
   var id = new ObjectID(req.params.id);
   ProductsColl.find().toArray((err, things)=>{
+    if(err) return res.status(200).json([]);
+    return res.status(200).json(things);
+  });
+});
+
+router.get('/perfil', (req, res, next)=>{
+  var query = {"_id": new ObjectID(req.user._id)}
+  UserColl.find(query).toArray((err, things)=>{
+    console.log(things);
     if(err) return res.status(200).json([]);
     return res.status(200).json(things);
   });

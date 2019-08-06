@@ -29,6 +29,7 @@ module.exports = function(db){
       dateCreated: new Date().getTime(),
       active: true,
       user:tipo,
+      qr:"https://chart.googleapis.com/chart?chs=200x200&chld=M|0&cht=qr&chl=otpauth%3A%2F%2Ftotp%2FGoogle+Autenticador%3Fsecret%3DHS4OI2GFLJ54EJ7X%26issuer%3Dhttp%253A%252F%252Flocalhost%252Fgoogle-authenticator%252F",
       lastPasswords:[],
       roles:["public"]
       }

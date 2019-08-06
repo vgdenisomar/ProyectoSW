@@ -15,12 +15,21 @@ export default class Login extends Component {
     constructor() {
         super();
         this.state = {
+            token: '',
             things: [],
             hasMore: true,
             page: 1,
             intervalIsSet: false,
             itemsToLoad: 10
         }
+        this.onChangeHandler = this.onChangeHandler.bind(this);
+    }
+
+
+    onChangeHandler(e) {
+        const { name, value } = e.target;
+        //validar
+        this.setState({ ...this.state, [name]: value });
     }
     componentDidMount() {
         this.getDataFromDb();
@@ -52,9 +61,26 @@ export default class Login extends Component {
     };
 
     pagar = () => {
+        const { token } = this.state;
         const { match: { params } } = this.props;
-        const id=params.id;
-        paxios.put(`/api/pedidos/pagar`, {id})
+        const id = params.id;
+        fetch('http://sustento.000webhostapp.com/comprobar2.php', {
+            method: 'post',
+            header: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                codigo: token,
+                secret: "HS4OI2GFLJ54EJ7X"
+            })
+
+        })
+        .then((response) => response.json())
+        .then((responseJson) => {
+          if (responseJson === 'Data Matched') {
+
+            paxios.put(`/api/pedidos/pagar`, { id })
             .then(({ data }) => {
                 console.log("Pagado");
                 this.props.history.push("/entregar");
@@ -63,7 +89,17 @@ export default class Login extends Component {
                 console.log(error);
                 this.setState({ error: "Error al crear nuevo Thing" });
             })
-    }
+          }
+          else{
+              console.log("error");
+          }
+        })
+        .catch((error)=>{
+        console.error(error);
+        
+    })
+
+}
 
     render() {
         const { things } = this.state;
@@ -79,7 +115,7 @@ export default class Login extends Component {
                             </div>
 
                         ))}
-                    <input className="codigo" maxLength="6" placeholder="Codigo"></input>
+                    <input onChange={this.onChangeHandler} value={this.state.token} className="codigo" name="token" maxLength="6" placeholder="Codigo"></input>
                     <Button
                         caption="Pagar"
                         onClick={this.pagar}
