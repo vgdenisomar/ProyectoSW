@@ -46,8 +46,8 @@ export default class Login extends Component {
         })
   };
 
-  register = (codProd, nombre_Product, proveedor) => {
-    paxios.post('/api/car', { codProd, nombre_Product, proveedor})
+  register = (codProd, nombre_Product, proveedor, Precio_Oferta) => {
+    paxios.post('/api/car', { codProd, nombre_Product, proveedor, Precio_Oferta})
       .then(({ data }) => {
         console.log("agregado");
       })
@@ -74,7 +74,7 @@ export default class Login extends Component {
                 <img className="imagen" src="https://titania.marfeel.com/statics/i/ps/www.ecestaticos.com/imagestatic/clipping/78e/458/78e458c5a29ae47ee828218afc325961/por-que-el-desayuno-es-la-comida-mas-importante-si-quieres-estar-delgado.jpg?mtime=1500459950"></img>
                 <div className="thingItem2" key={dat._id}>
 
-                  <span className="iconoadd"><IoIosAdd className="iconoadd2" onClick={this.register.bind(this, dat._id, dat.nombre_Product,dat.by)} size="2em" /></span>
+                  <span className="iconoadd"><IoIosAdd className="iconoadd2" onClick={this.register.bind(this, dat._id, dat.nombre_Product,dat.by,dat.Precio_Oferta)} size="2em" /></span>
 
                   <div className="span">
                     <span> {dat.nombre_Product}</span>

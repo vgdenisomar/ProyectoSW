@@ -16,7 +16,7 @@ function ProductsInit(db) {
         FacturaDetColl.aggregate(
             [
                  {$match: query},
-                 {$group: {_id: "$factura", total: { $sum:1}, name:{"$first":"$name"}} }
+                 {$group: {_id: "$factura", total: { $sum:1}, name:{"$first":"$name"}, precio:{"$first":"$precio"}} }
             ]
        ).toArray((err, things) => {
             if (err) return res.status(200).json([]);

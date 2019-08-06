@@ -42,6 +42,7 @@ function ProductsInit(db) {
                 "by": new ObjectID(_id),
                 "name":name,
                 "proveedor":new ObjectID(req.body.proveedor),
+                "precio":req.body.Precio_Oferta
             }
 
         );
